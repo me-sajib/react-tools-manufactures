@@ -5,7 +5,7 @@ import Tools from "./Tools";
 
 const Home = () => {
   return (
-    <div>
+    <div className="home-pages">
       <Navbar />
       <Banner />
       <Tools />
