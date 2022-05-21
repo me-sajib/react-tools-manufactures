@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Monkey Spanners",
+    "price": 367,
+    "image": "https://ibb.co/mCKwVxg",
+    "description": "Get your monkey spanner from this wide selection of international wholesalers. Find any type of wrench, sturdy and resistant, at amazingly great prices here ...",
+    "minimum-order": 50,
+    "available": 200
+  },
+  {
+    "name": "Plus Screwdriver",
+    "price": 200,
+    "image": "https://ibb.co/NntFQQt",
+    "description": "Tools Plus offers a large selection of power tools and more from top tool brands like Milwaukee, Makita, Dewalt and Bosch. Fast and free shipping on every time...",
+    "minimum-order": 80,
+    "available": 100
+  }
+]
