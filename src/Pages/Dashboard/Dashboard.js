@@ -18,13 +18,19 @@ const Dashboard = () => {
           <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content shadow-xl shadow-gray-400">
             {/* <!-- Sidebar content here --> */}
             <li>
-              <Link to="/dashboard/myOrder"> My Orders</Link>
+              <Link to="/dashboard/myProfile">
+                <i class="fa-solid fa-user"></i> My Profile
+              </Link>
             </li>
             <li>
-              <Link to="/dashboard/addReview">Add A Review</Link>
+              <Link to="/dashboard/myOrder">
+                <i class="fa-solid fa-cart-shopping"></i> My Orders
+              </Link>
             </li>
             <li>
-              <Link to="/dashboard/myProfile">My Profile</Link>
+              <Link to="/dashboard/addReview">
+                <i class="fa-solid fa-magnifying-glass"></i> Add A Review
+              </Link>
             </li>
           </ul>
         </div>
