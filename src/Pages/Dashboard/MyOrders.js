@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.config";
 import Spinner from "../Shared/Spinner";
+import Swal from "sweetalert2";
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -17,6 +18,22 @@ const MyOrders = () => {
         });
     }
   }, [user]);
+
+  const cancelOrder = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
+  };
 
   return (
     <div>
@@ -49,7 +66,12 @@ const MyOrders = () => {
                     </button>
                   </td>
                   <td>
-                    <button className="btn btn-xs">cancel</button>
+                    <button
+                      className="btn btn-xs"
+                      onClick={() => cancelOrder(orders._id)}
+                    >
+                      cancel
+                    </button>
                   </td>
                 </tr>
               ))}
