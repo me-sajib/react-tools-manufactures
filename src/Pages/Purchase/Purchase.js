@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import PurchaseModal from "./PurchaseModal";
 const Purchase = () => {
   const { id } = useParams();
   const { data: tool, isLoading } = useQuery(["tools", id], () =>
@@ -33,24 +34,8 @@ const Purchase = () => {
             </label>
           </div>
         </div>
-        {/* <!-- Put this part before </body> tag --> */}
-        <input type="checkbox" id="purchase-modal" class="modal-toggle" />
-        <div class="modal modal-bottom sm:modal-middle">
-          <div class="modal-box">
-            <h3 class="font-bold text-lg">
-              Congratulations random Interner user!
-            </h3>
-            <p class="py-4">
-              You've been selected for a chance to get one year of subscription
-              to use Wikipedia for free!
-            </p>
-            <div class="modal-action">
-              <label for="purchase-modal" class="btn">
-                Yay!
-              </label>
-            </div>
-          </div>
-        </div>
+        {/* show modal  */}
+        <PurchaseModal tool={tool} />
       </div>
     </div>
   );
