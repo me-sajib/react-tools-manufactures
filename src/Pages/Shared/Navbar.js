@@ -11,12 +11,7 @@ const Navbar = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
-      <li>
-        <Link to="/service">My Orders</Link>
-      </li>
-      <li>
-        <Link to="/service">Add A Review</Link>
-      </li>
+
       <li>
         <Link to="/service">My Portfolio</Link>
       </li>
@@ -24,7 +19,7 @@ const Navbar = () => {
         <Link to="/service">Blogs</Link>
       </li>
       <li>
-        <Link to="/service">Dashboard</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </li>
     </>
   );
@@ -58,7 +53,7 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="btn btn-ghost normal-case text-xl" href="/">
-            daisyUI
+            Tools Manufacture
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
