@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import toast from "react-hot-toast";
@@ -18,28 +19,33 @@ const PurchaseModal = ({ tool }) => {
     const toolName = name;
     const toolPrice = price;
 
-    if (
-      !userName ||
-      !email ||
-      !phone ||
-      !address ||
-      !orderQuantity ||
-      !toolName ||
-      !toolPrice
-    ) {
+    const totalPrice = orderQuantity * toolPrice;
+    if (!userName || !email || !phone || !address || !orderQuantity) {
       alert("Please fill out all fields");
       return;
     }
 
-    console.log(
+    const order = {
       userName,
       email,
       phone,
       address,
       orderQuantity,
       toolName,
-      toolPrice
-    );
+      toolPrice,
+      totalPrice,
+    };
+    fetch("http://localhost:5000/order", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(order),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
   //   error order count
   let orderError;
