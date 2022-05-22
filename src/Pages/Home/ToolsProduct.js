@@ -6,7 +6,7 @@ const ToolsProduct = ({ tools }) => {
   const { _id, name, price, description, minimumOrder, available, image } =
     tools;
   return (
-    <div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card w-96 bg-base-200 shadow-1xl">
       <figure>
         <img src={image} alt="Shoes" className="toolsImage" />
       </figure>
