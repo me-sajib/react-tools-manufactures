@@ -4134,6 +4134,13 @@ dom-serializer@^1.0.1:
     domhandler "^4.2.0"
     entities "^2.0.0"
 
+dom7@^4.0.4:
+  version "4.0.4"
+  resolved "https://registry.yarnpkg.com/dom7/-/dom7-4.0.4.tgz#8b68c5d8e5e2ed0fddb1cb93e433bc9060c8f3fb"
+  integrity sha512-DSSgBzQ4rJWQp1u6o+3FVwMNnT5bzQbMb+o31TjYYeRi05uAcpF8koxdfzeoe5ElzPmua7W7N28YJhF7iEKqIw==
+  dependencies:
+    ssr-window "^4.0.0"
+
 domelementtype@1:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/domelementtype/-/domelementtype-1.3.1.tgz#d048c44b37b0d10a7f2a3d5fee3f4333d790481f"
@@ -7839,6 +7846,11 @@ react-dom@^18.1.0:
     loose-envify "^1.1.0"
     scheduler "^0.22.0"
 
+react-dynamic-star@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/react-dynamic-star/-/react-dynamic-star-0.0.2.tgz#b084ba726d90c2d8ad57cc6e47c7d5ca46efa9b2"
+  integrity sha512-kmYmxs3batPOKhLY807tf1SHeqkSG8aJg13NGz3eVZh/yGOhYaUyAQXVMMsC+o928eXAP6ituuYQQfRwZu5+qg==
+
 react-error-overlay@^6.0.11:
   version "6.0.11"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.11.tgz#92835de5841c5cf08ba00ddd2d677b6d17ff9adb"
@@ -7884,6 +7896,11 @@ react-query@^3.39.0:
     "@babel/runtime" "^7.5.5"
     broadcast-channel "^3.4.1"
     match-sorter "^6.0.2"
+
+react-rating-stars-component@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-rating-stars-component/-/react-rating-stars-component-2.2.0.tgz#e947c6a1f59278e6fea1098453f43cb15d077c14"
+  integrity sha512-A3lgLxumfFQQicKQmxacZ91fq/zRaVWlCPnVodJmJV6obvod4/yCotetN9WuyBiUfnKsEFDBo/8B85ocwmL7ng==
 
 react-refresh@^0.11.0:
   version "0.11.0"
@@ -8545,6 +8562,11 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
+ssr-window@^4.0.0, ssr-window@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/ssr-window/-/ssr-window-4.0.2.tgz#dc6b3ee37be86ac0e3ddc60030f7b3bc9b8553be"
+  integrity sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==
+
 stable@^0.1.8:
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/stable/-/stable-0.1.8.tgz#836eb3c8382fe2936feaf544631017ce7d47a3cf"
@@ -8786,6 +8808,19 @@ svgo@^2.7.0:
     csso "^4.2.0"
     picocolors "^1.0.0"
     stable "^0.1.8"
+
+sweetalert2@^11.4.15:
+  version "11.4.15"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.4.15.tgz#a1682c7a016e43320d5d2f46e7f8a5a6ea1996c1"
+  integrity sha512-rj7fiN8hSMrXosoAvg13NB7OvlDS2swhL7uUGv9GcOAkr35QSQu/2Ly/93KE7eKNbYMOWtoTR00UVcgEyIoUCg==
+
+swiper@^8.1.5:
+  version "8.1.5"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-8.1.5.tgz#95e55779c6163619491d1ebd0c7c59f1bb8a6e58"
+  integrity sha512-wJv4Ro5R4FunzN4WADpag/i3p0BkDOATwCDbBKnGooENgHKFWxqDAe25kK6PLI6+pwM0hJQrpsRKGJXXkIeIHg==
+  dependencies:
+    dom7 "^4.0.4"
+    ssr-window "^4.0.2"
 
 symbol-tree@^3.2.4:
   version "3.2.4"
