@@ -1,13 +1,12 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import toast from "react-hot-toast";
 import auth from "../../firebase.config";
 import Spinner from "../Shared/Spinner";
+import Swal from "sweetalert2";
 
 const PurchaseModal = ({ tool }) => {
   const [user, loading] = useAuthState(auth);
-  const { name, price, description, minimumOrder, available, image } = tool;
+  const { name, price, minimumOrder, available } = tool;
   const [orderCount, setOrderCount] = useState(minimumOrder);
   const purchaseTool = async (e) => {
     e.preventDefault();
@@ -24,7 +23,7 @@ const PurchaseModal = ({ tool }) => {
       alert("Please fill out all fields");
       return;
     }
-
+    // order information
     const order = {
       userName,
       email,
@@ -35,6 +34,7 @@ const PurchaseModal = ({ tool }) => {
       toolPrice,
       totalPrice,
     };
+    // post order to database
     fetch("http://localhost:5000/order", {
       method: "POST",
       headers: {
@@ -44,7 +44,9 @@ const PurchaseModal = ({ tool }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.insertedId) {
+          Swal.fire("Done!", "product ordered successfully", "success");
+        }
       });
   };
   //   error order count
@@ -68,16 +70,18 @@ const PurchaseModal = ({ tool }) => {
           >
             ✕
           </label>
-          <h3 class="font-bold text-3xl">
-            You have purchase to{" "}
-            <span className="uppercase text-blue-500"> {name}</span>
+          <h3 class="font-bold text-3xl uppercase text-blue-500">
+            You have purchase to {name}
           </h3>
           <div class="py-4">
             <h2 className="text-2xl uppercase pb-5 text-secondary">
               Order Details
             </h2>
             {/* form to details user send to tools */}
-            <form onSubmit={purchaseTool} className="grid grid-cols-1 gap-3 ">
+            <form
+              onSubmit={purchaseTool}
+              className="grid grid-cols-1 gap-3 mt-2"
+            >
               {/* current user name */}
               <div className="form-control w-full mx-w-xs">
                 <label htmlFor="" className="label">
@@ -148,11 +152,16 @@ const PurchaseModal = ({ tool }) => {
               <input
                 type="submit"
                 value="Submit"
-                className="btn btn-secondary w-full max-w-xs"
+                className="btn btn-primary w-full max-w-xs"
               />
               <div class="modal-action">
                 {!orderError ? (
-                  <label type="submit" className="btn" htmlFor="purchase-modal">
+                  <label
+                    type="submit"
+                    id="purchase-modal"
+                    className="btn"
+                    htmlFor="purchase-modal"
+                  >
                     buy now
                   </label>
                 ) : (
