@@ -20,21 +20,42 @@ const MyOrders = () => {
   }, [user]);
 
   const cancelOrder = (id) => {
+    // show confirm
     Swal.fire({
       title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      text: "Are you sure want to cancel this order?",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
+      confirmButtonText: "Yes, cancel it!",
     }).then((result) => {
+      // is confirm button clicked
       if (result.isConfirmed) {
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        // cancel order api call
+        fetch(`http://localhost:5000/order/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            authorization: `Bearer ${localStorage.getItem("access")}`,
+          },
+          body: JSON.stringify({ id }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // if order is cancelled successfully
+            if (data.deletedCount) {
+              Swal.fire(
+                "Cancelled!",
+                "Your order has been cancelled.",
+                "success"
+              );
+              setOrders(orders.filter((order) => order._id !== id));
+            }
+          });
       }
     });
   };
-
   return (
     <div>
       <h2 className="text-3xl py-5 font-bold">Order Summery</h2>
@@ -68,7 +89,7 @@ const MyOrders = () => {
                   <td>
                     <button
                       className="btn btn-xs"
-                      onClick={() => cancelOrder(orders._id)}
+                      onClick={() => cancelOrder(order._id)}
                     >
                       cancel
                     </button>
