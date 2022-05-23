@@ -1,7 +1,22 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useQuery } from "react-query";
 import { Link, Outlet } from "react-router-dom";
+import auth from "../../firebase.config";
+import Spinner from "../Shared/Spinner";
 
 const Dashboard = () => {
+  const [user, loading] = useAuthState(auth);
+  const { data: isAdminUser, isLoading } = useQuery("isAdmin", () =>
+    fetch(`http://localhost:5000/user/${user.email}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("access")}`,
+      },
+    }).then((res) => res.json())
+  );
+  if (loading || isLoading) return <Spinner />;
   return (
     <div className="container-width">
       <div class="drawer drawer-mobile">
@@ -22,21 +37,27 @@ const Dashboard = () => {
                 <i class="fa-solid fa-user"></i> My Profile
               </Link>
             </li>
-            <li>
-              <Link to="/dashboard/allUser">
-                <i class="fa-solid fa-user"></i> All User
-              </Link>
-            </li>
-            <li>
-              <Link to="/dashboard/allOrder">
-                <i class="fa-solid fa-cart-shopping"></i> All Orders
-              </Link>
-            </li>
+
             <li>
               <Link to="/dashboard/myOrder">
                 <i class="fa-solid fa-cart-shopping"></i> My Orders
               </Link>
             </li>
+            {/* if user is admin then show */}
+            {isAdminUser?.role === "admin" && (
+              <>
+                <li>
+                  <Link to="/dashboard/allUser">
+                    <i class="fa-solid fa-users"></i> All User
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/allOrder">
+                    <i class="fa-solid fa-cart-shopping"></i> All Orders
+                  </Link>
+                </li>
+              </>
+            )}
             <li>
               <Link to="/dashboard/addReview">
                 <i class="fa-solid fa-magnifying-glass"></i> Add A Review
