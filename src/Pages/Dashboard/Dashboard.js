@@ -23,6 +23,11 @@ const Dashboard = () => {
               </Link>
             </li>
             <li>
+              <Link to="/dashboard/allUser">
+                <i class="fa-solid fa-user"></i> All User
+              </Link>
+            </li>
+            <li>
               <Link to="/dashboard/myOrder">
                 <i class="fa-solid fa-cart-shopping"></i> My Orders
               </Link>
