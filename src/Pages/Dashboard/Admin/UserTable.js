@@ -6,7 +6,7 @@ const UserTable = ({ user, refetch, index }) => {
       <td>{index + 1}</td>
       <td>{user?.email}</td>
       <td>
-        <button>make admin</button>
+        <button className="btn btn-xs btn-primary">make admin</button>
       </td>
       <td>
         <button className="btn btn-secondary btn-sm">delete</button>

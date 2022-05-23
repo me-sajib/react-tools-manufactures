@@ -17,7 +17,6 @@ const Users = () => {
       },
     }).then((res) => res.json())
   );
-  console.log(user);
   if (isLoading) return <Spinner />;
   return (
     <div>
