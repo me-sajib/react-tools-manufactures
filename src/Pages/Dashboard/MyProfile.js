@@ -39,6 +39,7 @@ const MyProfile = () => {
             <tr>
               <th>Name</th>
               <th>Email</th>
+              <th>LinkedIn</th>
               <th>Phone</th>
               <th>City</th>
               <th>Education</th>
@@ -48,6 +49,7 @@ const MyProfile = () => {
             <tr>
               <td>{user?.displayName}</td>
               <td>{user?.email}</td>
+              <td>{user?.linkedin}</td>
               <td>{information?.phone}</td>
               <td>{information?.city}</td>
               <td>{information?.education}</td>
