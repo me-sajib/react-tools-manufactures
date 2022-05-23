@@ -3,6 +3,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.config";
 import Spinner from "../Shared/Spinner";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -82,17 +83,37 @@ const MyOrders = () => {
                   <td>{order.orderQuantity}</td>
                   <td>${order.totalPrice}</td>
                   <td>
-                    <button className="btn btn-xs btn-secondary">
-                      pay now
-                    </button>
+                    {order.paid ? (
+                      <>
+                        <button className="btn btn-xs disabled">paid</button>
+                        <br />
+                        <span className="text-purple-500">
+                          Transaction ID: {order.transactionId}
+                        </span>
+                      </>
+                    ) : (
+                      <Link
+                        to={`/dashboard/payment/${order._id}`}
+                        className="btn btn-xs btn-secondary"
+                      >
+                        {" "}
+                        pay now{" "}
+                      </Link>
+                    )}
                   </td>
                   <td>
-                    <button
-                      className="btn btn-xs"
-                      onClick={() => cancelOrder(order._id)}
-                    >
-                      cancel
-                    </button>
+                    {order.paid ? (
+                      <button className="btn btn-xs" disabled>
+                        cancel
+                      </button>
+                    ) : (
+                      <button
+                        className="btn btn-xs"
+                        onClick={() => cancelOrder(order._id)}
+                      >
+                        cancel
+                      </button>
+                    )}
                   </td>
                 </tr>
               ))}

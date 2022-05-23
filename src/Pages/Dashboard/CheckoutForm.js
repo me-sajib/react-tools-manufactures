@@ -1,15 +1,16 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CheckoutForm = ({ order }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
-  const [success, setSuccess] = useState("");
   const [processing, setProcessing] = useState(false);
   const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
-
+  const navigate = useNavigate();
   const { _id, toolPrice, email, orderQuantity, userName } = order;
   const total = toolPrice * orderQuantity;
   useEffect(() => {
@@ -48,7 +49,6 @@ const CheckoutForm = ({ order }) => {
     });
 
     setCardError(error?.message || "");
-    setSuccess("");
     setProcessing(true);
     // confirm card payment
     const { paymentIntent, error: intentError } =
@@ -68,8 +68,7 @@ const CheckoutForm = ({ order }) => {
     } else {
       setCardError("");
       setTransactionId(paymentIntent.id);
-      console.log(paymentIntent);
-      setSuccess("Congrats! Your payment is completed.");
+      Swal.fire("Congrats!", "Your payment is completed.", "success");
 
       //store payment on database
       const payment = {
@@ -89,7 +88,7 @@ const CheckoutForm = ({ order }) => {
         .then((res) => res.json())
         .then((data) => {
           setProcessing(false);
-          console.log(data);
+          navigate("/dashboard/myOrder");
         });
     }
   };
@@ -121,15 +120,6 @@ const CheckoutForm = ({ order }) => {
         </button>
       </form>
       {cardError && <p className="text-red-500">{cardError}</p>}
-      {success && (
-        <div className="text-green-500">
-          <p>{success} </p>
-          <p>
-            Your transaction Id:{" "}
-            <span className="text-orange-500 font-bold">{transactionId}</span>{" "}
-          </p>
-        </div>
-      )}
     </div>
   );
 };
