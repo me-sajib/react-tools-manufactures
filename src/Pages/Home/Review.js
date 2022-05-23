@@ -32,7 +32,6 @@ const Review = () => {
     halfIcon: <i className="fa fa-star-half-alt" />,
     filledIcon: <i className="fa fa-star" />,
   };
-  console.log(reviewStarts.value);
   return (
     <div className="container-width">
       <h2 className="text-3xl">Review</h2>
