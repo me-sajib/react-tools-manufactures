@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import auth from "../../firebase.config";
@@ -7,21 +7,12 @@ import UpdateProfile from "./UpdateProfile";
 
 const MyProfile = () => {
   const [user, loading] = useAuthState(auth);
-  // const [information, setInformation] = useState([]);
-  // useEffect(() => {
-  //   fetch(`http://localhost:5000/information/${user.email}`)
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setInformation(data);
-  //     });
-  // }, [user]);
-  // console.log(information);
   const {
     data: information,
     isLoading,
     refetch,
-  } = useQuery(["profileData", user], () =>
-    fetch(`http://localhost:5000/information/${user.email}`).then((res) =>
+  } = useQuery(["information", user], () =>
+    fetch(`http://localhost:5000/userInformation/${user.email}`).then((res) =>
       res.json()
     )
   );
