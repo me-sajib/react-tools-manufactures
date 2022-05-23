@@ -7,30 +7,33 @@ import {
 import { useForm } from "react-hook-form";
 import auth from "../../firebase.config";
 import SocialLogin from "./SocialLogin";
+import UseToken from "../../Hooks/UseToken";
+import Spinner from "../Shared/Spinner";
 
 const Registration = () => {
-  const [createUserWithEmailAndPassword, user, loading, error] =
+  const [createUserWithEmailAndPassword, user, loading] =
     useCreateUserWithEmailAndPassword(auth);
-  const [updateProfile, updating, Uerror] = useUpdateProfile(auth);
-
+  const [updateProfile] = useUpdateProfile(auth);
+  // set token
+  const [token] = UseToken(user);
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate("/");
     }
-  }, [user, navigate]);
+  }, [token, navigate]);
 
   const submit = async (data) => {
     await createUserWithEmailAndPassword(data.email, data.password);
     await updateProfile({ displayName: data.name });
   };
+
   return (
     <div className="flex items-center justify-center h-screen">
       <div class="card w-96 bg-base-200 shadow-xl">
@@ -128,6 +131,7 @@ const Registration = () => {
                 )}
               </label>
             </div>
+            {loading && <Spinner />}
             <input
               type="submit"
               value="Sign Up"
