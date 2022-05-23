@@ -11,9 +11,9 @@ const UpdateProfile = ({ user, loading, information, refetch }) => {
     const phone = e.target.phone.value;
     const city = e.target.city.value;
     const education = e.target.education.value;
-    const information = { name, email, phone, city, education };
+    const information = { name, email, linkedin, phone, city, education };
 
-    fetch(`http://localhost:5000/updateProfile/${email}`, {
+    fetch(`http://localhost:5000/userInformation/${email}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
