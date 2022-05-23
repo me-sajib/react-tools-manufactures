@@ -7,6 +7,7 @@ const UpdateProfile = ({ user, loading, information, refetch }) => {
     e.preventDefault();
     const name = user?.displayName;
     const email = user?.email;
+    const linkedin = e.target.linkedin.value;
     const phone = e.target.phone.value;
     const city = e.target.city.value;
     const education = e.target.education.value;
@@ -32,7 +33,7 @@ const UpdateProfile = ({ user, loading, information, refetch }) => {
       });
   };
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="my-24 flex items-center justify-center h-screen">
       <div class="card w-96 bg-base-100 shadow-2xl">
         <div class="card-body">
           <h2 class="text-center text-2xl font-bold  uppercase">
@@ -60,6 +61,17 @@ const UpdateProfile = ({ user, loading, information, refetch }) => {
                 name="name"
                 disabled
                 value={user?.displayName}
+                className="input input-bordered w-full max-w-xs"
+              />
+            </div>
+            <div className="form-control w-full mx-w-xs">
+              <label htmlFor="" className="label">
+                <span className="label-text">LinkedIn</span>
+              </label>
+              <input
+                type="text"
+                name="linkedin"
+                placeholder="Your LinkedIn profile link"
                 className="input input-bordered w-full max-w-xs"
               />
             </div>
