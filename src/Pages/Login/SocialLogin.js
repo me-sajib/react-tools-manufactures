@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.config";
+import UseToken from "../../Hooks/UseToken";
 import Spinner from "../Shared/Spinner";
 
 const SocialLogin = () => {
@@ -10,11 +11,13 @@ const SocialLogin = () => {
   const location = useLocation();
   let from = location.state?.from || { pathname: "/" };
   // navigate previous page if user is already logged in
+
+  const [token] = UseToken(gUser);
   useEffect(() => {
-    if (gUser) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [gUser, navigate, from]);
+  }, [token, navigate, from]);
 
   return (
     <>

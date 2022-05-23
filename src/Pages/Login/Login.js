@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import auth from "../../firebase.config";
 import Spinner from "../Shared/Spinner";
 import SocialLogin from "./SocialLogin";
+import UseToken from "../../Hooks/UseToken";
 
 const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
@@ -15,19 +16,18 @@ const Login = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from || { pathname: "/" };
-
+  const [token] = UseToken(user);
   useEffect(() => {
-    if (user) {
+    if (token) {
       navigate(from, { replace: true });
     }
-  }, [user, navigate, from]);
+  }, [token, navigate, from]);
 
   let errorMessage;
   if (error) {
