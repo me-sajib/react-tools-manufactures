@@ -28,6 +28,11 @@ const Dashboard = () => {
               </Link>
             </li>
             <li>
+              <Link to="/dashboard/allOrder">
+                <i class="fa-solid fa-cart-shopping"></i> All Orders
+              </Link>
+            </li>
+            <li>
               <Link to="/dashboard/myOrder">
                 <i class="fa-solid fa-cart-shopping"></i> My Orders
               </Link>
