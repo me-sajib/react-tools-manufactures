@@ -32,7 +32,11 @@ const Dashboard = () => {
           <label for="my-drawer-2" class="drawer-overlay"></label>
           <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content shadow-xl shadow-gray-400">
             {/* <!-- Sidebar content here --> */}
-
+            <li>
+              <Link to="/dashboard/myProfile">
+                <i class="fa-solid fa-user"></i> My Profile
+              </Link>
+            </li>
             {/* if user is admin then show */}
             {isAdminUser?.role === "admin" ? (
               <>
@@ -60,11 +64,6 @@ const Dashboard = () => {
             ) : (
               <>
                 {/* user see this nav link */}
-                <li>
-                  <Link to="/dashboard/myProfile">
-                    <i class="fa-solid fa-user"></i> My Profile
-                  </Link>
-                </li>
 
                 <li>
                   <Link to="/dashboard/myOrder">
