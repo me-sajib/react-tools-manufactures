@@ -1,27 +1,35 @@
 import React from "react";
-import { useQuery } from "react-query";
 import Swal from "sweetalert2";
-import Spinner from "../../Shared/Spinner";
 
 const OrderTable = ({ order, index, refetch }) => {
-  const { data: status, isLoading } = useQuery("status", () =>
-    fetch("http://localhost:5000/order", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("access")}`,
-      },
-    }).then((res) => res.json())
-  );
-
-  if (isLoading) return <Spinner />;
-
   const orderStatus = (e) => {
     e.preventDefault();
     const status = e.target.value;
     const orderId = order._id;
-    console.log(status);
+
+    // update order status api call
+
+    fetch(`http://localhost:5000/order/status/${orderId}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("access")}`,
+      },
+      body: JSON.stringify({ status }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          Swal.fire(
+            "Status Updated!",
+            "Order status has been updated.",
+            "success"
+          );
+          refetch();
+        }
+      });
   };
+
   // delete order
   const deleteOrder = (id) => {
     Swal.fire({
@@ -52,7 +60,6 @@ const OrderTable = ({ order, index, refetch }) => {
       }
     });
   };
-
   return (
     <tr>
       <td>{index + 1}</td>
@@ -61,19 +68,19 @@ const OrderTable = ({ order, index, refetch }) => {
       <td>
         <form onChange={orderStatus}>
           <select class="select w-full max-w-xs select-bordered" name="order">
-            {status.map((status) =>
-              status.status === "Pending" ? (
-                <>
-                  <option selected disabled>
-                    Pending
-                  </option>
-                  <option>Shifted</option>
-                </>
-              ) : (
+            {order.status === "Pending" ? (
+              <>
+                <option selected disabled>
+                  Pending
+                </option>
+                <option>Shifted</option>
+              </>
+            ) : (
+              <>
                 <option selected disabled>
                   Shifted
                 </option>
-              )
+              </>
             )}
           </select>
         </form>
