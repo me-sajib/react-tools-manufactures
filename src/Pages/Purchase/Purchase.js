@@ -29,14 +29,10 @@ const Purchase = () => {
               Available:{" "}
               <span className="text-blue-500 font-bold">{tool.available}</span>
             </p>
-            <label htmlFor="purchase-modal" class="btn modal-button">
-              order now
-            </label>
           </div>
         </div>
-        {/* show modal  */}
-        <PurchaseModal tool={tool} />
       </div>
+      <PurchaseModal tool={tool} />
     </div>
   );
 };
