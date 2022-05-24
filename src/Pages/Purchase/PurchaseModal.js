@@ -19,16 +19,7 @@ const PurchaseModal = ({ tool }) => {
     const toolName = name;
     const toolPrice = price;
     const status = "Pending";
-    console.log(
-      userName,
-      email,
-      phone,
-      address,
-      orderQuantity,
-      toolName,
-      toolPrice,
-      status
-    );
+
     const totalPrice = orderQuantity * toolPrice;
     if (!userName || !email || !phone || !address || !orderQuantity) {
       Swal.fire("Error", "Please fill all the fields", "error");
