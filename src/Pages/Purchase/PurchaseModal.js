@@ -21,7 +21,7 @@ const PurchaseModal = ({ tool }) => {
 
     const totalPrice = orderQuantity * toolPrice;
     if (!userName || !email || !phone || !address || !orderQuantity) {
-      alert("Please fill out all fields");
+      Swal.fire("Error", "Please fill all the fields", "error");
       return;
     }
     // order information
