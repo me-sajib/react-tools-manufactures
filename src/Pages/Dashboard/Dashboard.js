@@ -42,7 +42,7 @@ const Dashboard = () => {
               <>
                 <li>
                   <Link to="/dashboard/allUser">
-                    <i class="fa-solid fa-users"></i> All User
+                    <i class="fa-solid fa-users"></i> Make Admin
                   </Link>
                 </li>
                 <li>
