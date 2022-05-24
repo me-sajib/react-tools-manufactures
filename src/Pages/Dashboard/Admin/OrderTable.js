@@ -73,12 +73,12 @@ const OrderTable = ({ order, index, refetch }) => {
                 <option selected disabled>
                   Pending
                 </option>
-                <option>Shifted</option>
+                {order.paid ? <option>Shipped</option> : null}
               </>
             ) : (
               <>
                 <option selected disabled>
-                  Shifted
+                  Shipped
                 </option>
               </>
             )}
@@ -89,16 +89,22 @@ const OrderTable = ({ order, index, refetch }) => {
         {order?.paid ? (
           <span className="btn btn-xs btn-success"> paid</span>
         ) : (
-          "unpaid"
+          <span className="text-orange-500">unpaid</span>
         )}
       </td>
       <td>
-        <button
-          className="btn btn-xs btn-primary"
-          onClick={() => deleteOrder(order._id)}
-        >
-          Cancel
-        </button>
+        {order.paid ? (
+          <button className="btn btn-xs btn-primary" disabled>
+            Cancel
+          </button>
+        ) : (
+          <button
+            className="btn btn-xs btn-primary"
+            onClick={() => deleteOrder(order._id)}
+          >
+            Cancel
+          </button>
+        )}
       </td>
     </tr>
   );
