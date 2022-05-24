@@ -32,19 +32,9 @@ const Dashboard = () => {
           <label for="my-drawer-2" class="drawer-overlay"></label>
           <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content shadow-xl shadow-gray-400">
             {/* <!-- Sidebar content here --> */}
-            <li>
-              <Link to="/dashboard/myProfile">
-                <i class="fa-solid fa-user"></i> My Profile
-              </Link>
-            </li>
 
-            <li>
-              <Link to="/dashboard/myOrder">
-                <i class="fa-solid fa-cart-shopping"></i> My Orders
-              </Link>
-            </li>
             {/* if user is admin then show */}
-            {isAdminUser?.role === "admin" && (
+            {isAdminUser?.role === "admin" ? (
               <>
                 <li>
                   <Link to="/dashboard/allUser">
@@ -53,16 +43,41 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <Link to="/dashboard/allOrder">
-                    <i class="fa-solid fa-cart-shopping"></i> All Orders
+                    <i class="fa-solid fa-cart-shopping"></i>Manage All Orders
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/addProduct">
+                    <i class="fa-solid fa-cart-add"></i>Add A Product
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/manageProduct">
+                    <i class="fa-solid fa-cart-shopping"></i>Manage Products
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                {/* user see this nav link */}
+                <li>
+                  <Link to="/dashboard/myProfile">
+                    <i class="fa-solid fa-user"></i> My Profile
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/dashboard/myOrder">
+                    <i class="fa-solid fa-cart-shopping"></i> My Orders
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard/addReview">
+                    <i class="fa-solid fa-magnifying-glass"></i> Add A Review
                   </Link>
                 </li>
               </>
             )}
-            <li>
-              <Link to="/dashboard/addReview">
-                <i class="fa-solid fa-magnifying-glass"></i> Add A Review
-              </Link>
-            </li>
           </ul>
         </div>
       </div>
