@@ -1,4 +1,5 @@
 import React from "react";
+import picture from "./image/me.jpg";
 
 const MyPortfolio = () => {
   return (
@@ -7,10 +8,11 @@ const MyPortfolio = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row">
           <img
-            src="https://api.lorem.space/image/movie?w=260&h=400"
+            src={picture}
             className="max-w-sm rounded-lg shadow-2xl"
+            alt="profile "
           />
-          <div>
+          <div className="pl-12">
             <h1 className="text-5xl font-bold">
               Hey i'm <span className="text-primary">Mohammad Sajib</span>
             </h1>
