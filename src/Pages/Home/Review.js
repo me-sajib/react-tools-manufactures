@@ -8,7 +8,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "./css/Review.css";
 import { useQuery } from "react-query";
-import ReactStars from "react-rating-stars-component";
 
 const Review = () => {
   const { data: review, isLoading } = useQuery("review", () =>
@@ -20,21 +19,17 @@ const Review = () => {
         <span className="sr-only">Loading...</span>
       </div>
     );
-
-  const reviewStarts = {
-    size: 15,
-    count: 5,
-    color: "yellow",
-    activeColor: "yellow",
-    value: 0,
-    isHalf: true,
-    emptyIcon: <i className="far fa-star" />,
-    halfIcon: <i className="fa fa-star-half-alt" />,
-    filledIcon: <i className="fa fa-star" />,
+  const reviewStars = (num) => {
+    // show star based on number
+    let stars = [];
+    for (let i = 0; i < num; i++) {
+      stars.push(<i className="fas fa-star text-orange-500" kye={i}></i>);
+    }
+    return stars;
   };
   return (
     <div className="container-width">
-      <h2 className="text-3xl">Review</h2>
+      <h2 className="text-3xl font-bold text-secondary py-12">Review</h2>
       <Swiper
         slidesPerView={3}
         spaceBetween={30}
@@ -42,11 +37,11 @@ const Review = () => {
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper"
+        className="mySwiper my-4"
       >
         {review.map((review) => (
           <SwiperSlide key={review._id}>
-            <div class="card w-96 bg-base-100 shadow-xl">
+            <div class="card w-96 bg-base-100 shadow-xl mb-12">
               <figure class="px-10 pt-10">
                 <div class="avatar placeholder">
                   <div class="bg-neutral-focus text-neutral-content rounded-full w-24">
@@ -56,10 +51,11 @@ const Review = () => {
               </figure>
               <div class="card-body items-center text-center">
                 <h2 class="card-title">{review.name}</h2>
-                <ReactStars {...reviewStarts} />
-                {(reviewStarts.value = review.reviewStar)}
+                {/* inline show star */}
+                <div className="flex items-center justify-center">
+                  {reviewStars(review.numberOfReview)}
+                </div>
                 <p>{review.description}</p>
-                <p>review count{review.reviewStart}</p>
               </div>
             </div>
           </SwiperSlide>
