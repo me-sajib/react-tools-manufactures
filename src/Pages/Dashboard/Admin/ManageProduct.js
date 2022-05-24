@@ -17,7 +17,7 @@ const ManageProduct = () => {
       <h2 className="text-3xl text-orange-500 uppercase py-5">
         Manage Product
       </h2>
-      <table class="table w-full my-4">
+      <table className="table w-full my-4">
         <thead>
           <tr>
             <th></th>

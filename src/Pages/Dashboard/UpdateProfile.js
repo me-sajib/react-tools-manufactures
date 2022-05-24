@@ -34,9 +34,9 @@ const UpdateProfile = ({ user, loading, information, refetch }) => {
   };
   return (
     <div className="my-24 flex items-center justify-center h-screen">
-      <div class="card w-96 bg-base-100 shadow-2xl">
-        <div class="card-body">
-          <h2 class="text-center text-2xl font-bold  uppercase">
+      <div className="card w-96 bg-base-100 shadow-2xl">
+        <div className="card-body">
+          <h2 className="text-center text-2xl font-bold  uppercase">
             Update Information
           </h2>
           <form className="grid grid-cols-1 gap-3" onSubmit={updateInformation}>

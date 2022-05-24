@@ -4,14 +4,14 @@ const MyPortfolio = () => {
   return (
     <div className="container-width py-12">
       <h1 className="text-center text-4xl my-12">My Profile</h1>
-      <div class="hero min-h-screen bg-base-200">
-        <div class="hero-content flex-col lg:flex-row">
+      <div className="hero min-h-screen bg-base-200">
+        <div className="hero-content flex-col lg:flex-row">
           <img
             src="https://api.lorem.space/image/movie?w=260&h=400"
-            class="max-w-sm rounded-lg shadow-2xl"
+            className="max-w-sm rounded-lg shadow-2xl"
           />
           <div>
-            <h1 class="text-5xl font-bold">
+            <h1 className="text-5xl font-bold">
               Hey i'm <span className="text-primary">Mohammad Sajib</span>
             </h1>
             <p className="py-6 text-2xl font-bold">
@@ -47,7 +47,7 @@ const MyPortfolio = () => {
               </a>
             </p>
 
-            <button class="btn btn-primary">Get Started</button>
+            <button className="btn btn-primary">Get Started</button>
           </div>
         </div>
       </div>

@@ -40,9 +40,9 @@ const Login = () => {
 
   return (
     <div className="flex items-center justify-center h-screen">
-      <div class="card w-96 bg-base-200 shadow-xl">
-        <div class="card-body">
-          <h2 class="text-center text-2xl font-bold  uppercase">Login</h2>
+      <div className="card w-96 bg-base-200 shadow-xl">
+        <div className="card-body">
+          <h2 className="text-center text-2xl font-bold  uppercase">Login</h2>
           <form
             className="grid grid-cols-1 gap-3"
             onSubmit={handleSubmit(submit)}
@@ -131,7 +131,7 @@ const Login = () => {
               </Link>
             </small>
           </p>
-          <div class="divider">OR</div>
+          <div className="divider">OR</div>
           {/* social login */}
           <SocialLogin />
         </div>

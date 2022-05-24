@@ -10,12 +10,16 @@ const Purchase = () => {
   if (isLoading) return <p>Loading...</p>;
   return (
     <div className="container-width">
-      <div class="hero  bg-base-100 my-24">
-        <div class="hero-content flex-col lg:flex-row">
-          <img src={tool.image} class="max-w-sm rounded-lg shadow-2xl" alt="" />
+      <div className="hero  bg-base-100 my-24">
+        <div className="hero-content flex-col lg:flex-row">
+          <img
+            src={tool.image}
+            className="max-w-sm rounded-lg shadow-2xl"
+            alt=""
+          />
           <div>
-            <h1 class="text-5xl font-bold">{tool.name}</h1>
-            <p class="py-6">{tool.description}</p>
+            <h1 className="text-5xl font-bold">{tool.name}</h1>
+            <p className="py-6">{tool.description}</p>
             <h3 className="text-2xl font-semibold uppercase">
               price: ${tool.price}
             </h3>

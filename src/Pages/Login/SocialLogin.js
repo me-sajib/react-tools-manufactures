@@ -26,7 +26,7 @@ const SocialLogin = () => {
         gLoading && <Spinner />
       }
 
-      <button class="btn btn-outline" onClick={() => signInWithGoogle()}>
+      <button className="btn btn-outline" onClick={() => signInWithGoogle()}>
         sign in with google
       </button>
     </>

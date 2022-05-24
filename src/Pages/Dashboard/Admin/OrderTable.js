@@ -67,7 +67,10 @@ const OrderTable = ({ order, index, refetch }) => {
       <td>{order?.toolName}</td>
       <td>
         <form onChange={orderStatus}>
-          <select class="select w-full max-w-xs select-bordered" name="order">
+          <select
+            className="select w-full max-w-xs select-bordered"
+            name="order"
+          >
             {order.status === "Pending" ? (
               <>
                 <option selected disabled>

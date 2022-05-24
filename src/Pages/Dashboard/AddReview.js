@@ -44,8 +44,8 @@ const AddReview = () => {
   return (
     <div>
       <div className="flex items-center justify-center ">
-        <div class="card w-96 bg-base-100 shadow-xl">
-          <div class="card-body">
+        <div className="card w-96 bg-base-100 shadow-xl">
+          <div className="card-body">
             <h3 className="text-2xl font-bold">Give Feedback</h3>
             <form onSubmit={userReview} className="grid grid-cols-1 gap-3 ">
               {/* current user name */}
@@ -58,7 +58,7 @@ const AddReview = () => {
                   disabled
                   name="name"
                   value={user?.displayName}
-                  class="input input-bordered input-md w-full max-w-xs"
+                  className="input input-bordered input-md w-full max-w-xs"
                 />
               </div>
               {/* current address  */}
@@ -73,7 +73,7 @@ const AddReview = () => {
                   maxLength="1"
                   name="review"
                   placeholder="your review here 1 to 5"
-                  class="input input-bordered input-md w-full max-w-xs"
+                  className="input input-bordered input-md w-full max-w-xs"
                 />
               </div>
               {/* current user name */}
@@ -85,7 +85,7 @@ const AddReview = () => {
                   type="text"
                   name="description"
                   placeholder="your description"
-                  class=" textarea textarea-bordered textarea-md w-full max-w-xs"
+                  className=" textarea textarea-bordered textarea-md w-full max-w-xs"
                 />
               </div>
               <input type="submit" value="review" className="btn btn-primary" />

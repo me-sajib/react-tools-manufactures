@@ -41,16 +41,16 @@ const Review = () => {
       >
         {review.map((review) => (
           <SwiperSlide key={review._id}>
-            <div class="card w-96 bg-base-100 shadow-xl mb-12">
-              <figure class="px-10 pt-10">
-                <div class="avatar placeholder">
-                  <div class="bg-neutral-focus text-neutral-content rounded-full w-24">
-                    <span class="text-3xl">{review.name}</span>
+            <div className="card w-96 bg-base-100 shadow-xl mb-12">
+              <figure className="px-10 pt-10">
+                <div className="avatar placeholder">
+                  <div className="bg-neutral-focus text-neutral-content rounded-full w-24">
+                    <span className="text-3xl">{review.name}</span>
                   </div>
                 </div>
               </figure>
-              <div class="card-body items-center text-center">
-                <h2 class="card-title">{review.name}</h2>
+              <div className="card-body items-center text-center">
+                <h2 className="card-title">{review.name}</h2>
                 {/* inline show star */}
                 <div className="flex items-center justify-center">
                   {reviewStars(review.numberOfReview)}

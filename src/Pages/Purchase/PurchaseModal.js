@@ -64,13 +64,13 @@ const PurchaseModal = ({ tool }) => {
   return (
     <div>
       <div
-        class="hero min-h-screen"
+        className="hero min-h-screen"
         style={{ backgroundImage: `url(${tool.image})` }}
       >
-        <div class="hero-overlay bg-opacity-90"></div>
-        <div class="hero-content text-center text-neutral-content">
-          <div class="max-w-md">
-            <h3 class="font-bold mb-5 text-3xl uppercase text-primary-500">
+        <div className="hero-overlay bg-opacity-90"></div>
+        <div className="hero-content text-center text-neutral-content">
+          <div className="max-w-md">
+            <h3 className="font-bold mb-5 text-3xl uppercase text-primary-500">
               You have purchase to <em> {name}</em>
             </h3>
             <h2 className="text-2xl uppercase pb-5 text-secondary">
@@ -90,7 +90,7 @@ const PurchaseModal = ({ tool }) => {
                   readOnly
                   name="name"
                   value={user?.displayName}
-                  class="input input-bordered input-md w-full max-w-md"
+                  className="input input-bordered input-md w-full max-w-md"
                 />
               </div>
 
@@ -105,7 +105,7 @@ const PurchaseModal = ({ tool }) => {
                   readOnly
                   value={user?.email}
                   placeholder="your email"
-                  class="input input-bordered  input-md w-full max-w-md"
+                  className="input input-bordered  input-md w-full max-w-md"
                 />
               </div>
 
@@ -118,7 +118,7 @@ const PurchaseModal = ({ tool }) => {
                   type="number"
                   name="phone"
                   placeholder="your phone number"
-                  class="input input-bordered input-md w-full max-w-md"
+                  className="input input-bordered input-md w-full max-w-md"
                 />
               </div>
 
@@ -132,7 +132,7 @@ const PurchaseModal = ({ tool }) => {
                   name="orderCount"
                   value={orderCount}
                   onChange={(e) => setOrderCount(e.target.value)}
-                  class="input input-bordered input-md w-full max-w-md"
+                  className="input input-bordered input-md w-full max-w-md"
                 />
                 {orderError && (
                   <p className="text-red-500 text-left">{orderError}</p>
@@ -146,7 +146,7 @@ const PurchaseModal = ({ tool }) => {
                   type="text"
                   name="address"
                   placeholder="your shipping address"
-                  class="input input-bordered input-md w-full max-w-md"
+                  className="input input-bordered input-md w-full max-w-md"
                 />
               </div>
 
