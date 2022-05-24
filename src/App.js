@@ -16,6 +16,7 @@ import Payment from "./Pages/Dashboard/Payment";
 import AllOrder from "./Pages/Dashboard/Admin/AllOrder";
 import AddProduct from "./Pages/Dashboard/Admin/AddProduct";
 import ManageProduct from "./Pages/Dashboard/Admin/ManageProduct";
+import Blog from "./Pages/Home/Blog";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
         <Route
           path="/purchase/:id"
           element={
