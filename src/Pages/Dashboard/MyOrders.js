@@ -71,6 +71,7 @@ const MyOrders = () => {
                 <th>Quantity</th>
                 <th>Total Price</th>
                 <th>Pay</th>
+                <th>Status</th>
                 <th>Cancel</th>
               </tr>
             </thead>
@@ -87,9 +88,13 @@ const MyOrders = () => {
                       <>
                         <button className="btn btn-xs disabled">paid</button>
                         <br />
-                        <span className="text-purple-500">
-                          Transaction ID: {order.transactionId}
-                        </span>
+                        <small>
+                          Transaction ID: <br />
+                          <b className="text-purple-500">
+                            {" "}
+                            {order.transactionId}
+                          </b>
+                        </small>
                       </>
                     ) : (
                       <Link
@@ -99,6 +104,14 @@ const MyOrders = () => {
                         {" "}
                         pay now{" "}
                       </Link>
+                    )}
+                  </td>
+
+                  <td>
+                    {order.status !== "Shifted" ? (
+                      <span className="text-orange-500">{order.status}...</span>
+                    ) : (
+                      <span className="text-green-500">{order.status}</span>
                     )}
                   </td>
                   <td>
