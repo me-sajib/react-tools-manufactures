@@ -13,7 +13,7 @@ const Navbar = () => {
       </li>
 
       <li>
-        <Link to="/service">My Portfolio</Link>
+        <Link to="/portfolio">My Portfolio</Link>
       </li>
       <li>
         <Link to="/blog">Blogs</Link>

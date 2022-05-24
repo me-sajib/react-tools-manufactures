@@ -18,6 +18,7 @@ import AddProduct from "./Pages/Dashboard/Admin/AddProduct";
 import ManageProduct from "./Pages/Dashboard/Admin/ManageProduct";
 import Blog from "./Pages/Home/Blog";
 import NotFound from "./Pages/Shared/NotFound";
+import MyPortfolio from "./Pages/Portfolio/MyPortfolio";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blog" element={<Blog />} />
+        <Route path="/portfolio" element={<MyPortfolio />} />
         <Route
           path="/purchase/:id"
           element={
