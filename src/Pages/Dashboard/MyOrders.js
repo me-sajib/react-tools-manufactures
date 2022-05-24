@@ -108,8 +108,8 @@ const MyOrders = () => {
                   </td>
 
                   <td>
-                    {order.status !== "Shifted" ? (
-                      <span className="text-orange-500">{order.status}...</span>
+                    {order.status !== "Shipped" ? (
+                      <span className="text-orange-500">{order.status}</span>
                     ) : (
                       <span className="text-green-500">{order.status}</span>
                     )}
