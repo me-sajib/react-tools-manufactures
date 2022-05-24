@@ -36,6 +36,7 @@ const AddProduct = () => {
             "Product has been added to the database.",
             "success"
           );
+          e.target.reset();
         }
       });
   };
