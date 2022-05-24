@@ -17,6 +17,7 @@ const PurchaseModal = ({ tool }) => {
     const orderQuantity = orderCount;
     const toolName = name;
     const toolPrice = price;
+    const status = "Pending";
 
     const totalPrice = orderQuantity * toolPrice;
     if (!userName || !email || !phone || !address || !orderQuantity) {
@@ -33,6 +34,7 @@ const PurchaseModal = ({ tool }) => {
       toolName,
       toolPrice,
       totalPrice,
+      status,
     };
     // post order to database
     fetch("http://localhost:5000/order", {
