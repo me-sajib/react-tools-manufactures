@@ -18,7 +18,9 @@ const OrderTable = ({ order, index, refetch }) => {
 
   const orderStatus = (e) => {
     e.preventDefault();
-    console.log(e.target.value);
+    const status = e.target.value;
+    const orderId = order._id;
+    console.log(status);
   };
   // delete order
   const deleteOrder = (id) => {
@@ -58,13 +60,21 @@ const OrderTable = ({ order, index, refetch }) => {
       <td>{order?.toolName}</td>
       <td>
         <form onChange={orderStatus}>
-          <select class="select w-full max-w-xs" name="order">
-            <option disabled selected>
-              Order Status
-            </option>
-            <option>Pending</option>
-            <option>Shifted</option>
-            <option>Delivery</option>
+          <select class="select w-full max-w-xs select-bordered" name="order">
+            {status.map((status) =>
+              status.status === "Pending" ? (
+                <>
+                  <option selected disabled>
+                    Pending
+                  </option>
+                  <option>Shifted</option>
+                </>
+              ) : (
+                <option selected disabled>
+                  Shifted
+                </option>
+              )
+            )}
           </select>
         </form>
       </td>
