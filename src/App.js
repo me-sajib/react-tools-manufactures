@@ -19,6 +19,7 @@ import ManageProduct from "./Pages/Dashboard/Admin/ManageProduct";
 import Blog from "./Pages/Home/Blog";
 import NotFound from "./Pages/Shared/NotFound";
 import MyPortfolio from "./Pages/Portfolio/MyPortfolio";
+import RequireAdmin from "./Auth/RequireAdmin";
 
 function App() {
   return (
@@ -49,11 +50,40 @@ function App() {
           <Route index path="myOrder" element={<MyOrders />} />
           <Route path="addReview" element={<AddReview />} />
           <Route path="myProfile" element={<MyProfile />} />
-          <Route path="allUser" element={<Users />} />
+          <Route
+            path="allUser"
+            element={
+              <RequireAdmin>
+                {" "}
+                <Users />
+              </RequireAdmin>
+            }
+          />
           <Route path="payment/:id" element={<Payment />} />
-          <Route path="allOrder" element={<AllOrder />} />
-          <Route path="addProduct" element={<AddProduct />} />
-          <Route path="manageProduct" element={<ManageProduct />} />
+          <Route
+            path="allOrder"
+            element={
+              <RequireAdmin>
+                <AllOrder />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="addProduct"
+            element={
+              <RequireAdmin>
+                <AddProduct />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="manageProduct"
+            element={
+              <RequireAdmin>
+                <ManageProduct />
+              </RequireAdmin>
+            }
+          />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
