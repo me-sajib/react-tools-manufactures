@@ -8,19 +8,21 @@ import Spinner from "../Pages/Shared/Spinner";
 
 const RequireAdmin = ({ children }) => {
   const [user, loading] = useAuthState(auth);
-  const [admin, adminLoading] = useAdmin(user);
+  const [admin, loadingAdminCheck] = useAdmin(user);
   const location = useLocation();
 
-  if (loading || adminLoading) {
+  if (loading || loadingAdminCheck) {
     return <Spinner />;
   }
 
-  if (!user || !admin) {
+  if (!user || admin === false) {
     signOut(auth);
     localStorage.removeItem("access");
     return <Navigate to="/login" state={{ from: location }} replace></Navigate>;
   }
-  return children;
+  if (admin === true) {
+    return children;
+  }
 };
 
 export default RequireAdmin;
