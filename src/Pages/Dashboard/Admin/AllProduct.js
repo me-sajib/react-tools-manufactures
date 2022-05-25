@@ -12,7 +12,7 @@ const AllProduct = ({ product, index, refetch }) => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, cancel it!",
+      confirmButtonText: "Yes, Delete it!",
     }).then((result) => {
       // is confirm button clicked
       if (result.isConfirmed) {
