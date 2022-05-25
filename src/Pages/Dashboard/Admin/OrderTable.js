@@ -9,14 +9,17 @@ const OrderTable = ({ order, index, refetch }) => {
 
     // update order status api call
 
-    fetch(`http://localhost:5000/order/status/${orderId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("access")}`,
-      },
-      body: JSON.stringify({ status }),
-    })
+    fetch(
+      `https://boiling-hollows-81420.herokuapp.com/order/status/${orderId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("access")}`,
+        },
+        body: JSON.stringify({ status }),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {
@@ -43,7 +46,7 @@ const OrderTable = ({ order, index, refetch }) => {
     }).then((result) => {
       // is confirm button clicked
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/order/${id}`, {
+        fetch(`https://boiling-hollows-81420.herokuapp.com/order/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

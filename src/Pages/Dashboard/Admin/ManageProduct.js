@@ -9,7 +9,9 @@ const ManageProduct = () => {
     isLoading,
     refetch,
   } = useQuery("AllProducts", () =>
-    fetch("http://localhost:5000/tools").then((res) => res.json())
+    fetch("https://boiling-hollows-81420.herokuapp.com/tools").then((res) =>
+      res.json()
+    )
   );
 
   if (isLoading) return <Spinner />;

@@ -3,13 +3,16 @@ import Swal from "sweetalert2";
 
 const UserTable = ({ users, refetch, currentUser, index }) => {
   const createAdmin = () => {
-    fetch(`http://localhost:5000/user/admin/${users.email}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("access")}`,
-      },
-    })
+    fetch(
+      `https://boiling-hollows-81420.herokuapp.com/user/admin/${users.email}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("access")}`,
+        },
+      }
+    )
       .then((res) => {
         if (res.status === 403) {
           Swal.fire("Fail!", "Failed to Make an admin", "error");
@@ -39,7 +42,7 @@ const UserTable = ({ users, refetch, currentUser, index }) => {
       // is confirm button clicked
       if (result.isConfirmed) {
         const email = users.email;
-        fetch(`http://localhost:5000/user/${email}`, {
+        fetch(`https://boiling-hollows-81420.herokuapp.com/user/${email}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

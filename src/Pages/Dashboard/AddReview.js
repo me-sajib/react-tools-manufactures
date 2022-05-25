@@ -19,7 +19,7 @@ const AddReview = () => {
     }
 
     const review = { name, description, numberOfReview };
-    fetch("http://localhost:5000/review", {
+    fetch("https://boiling-hollows-81420.herokuapp.com/review", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

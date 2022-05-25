@@ -16,7 +16,7 @@ const AllProduct = ({ product, index, refetch }) => {
     }).then((result) => {
       // is confirm button clicked
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/tools/${id}`, {
+        fetch(`https://boiling-hollows-81420.herokuapp.com/tools/${id}`, {
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",

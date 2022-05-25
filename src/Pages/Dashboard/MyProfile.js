@@ -12,9 +12,9 @@ const MyProfile = () => {
     isLoading,
     refetch,
   } = useQuery("information", () =>
-    fetch(`http://localhost:5000/userInformation/${user.email}`).then((res) =>
-      res.json()
-    )
+    fetch(
+      `https://boiling-hollows-81420.herokuapp.com/userInformation/${user.email}`
+    ).then((res) => res.json())
   );
 
   if (isLoading) return <Spinner />;

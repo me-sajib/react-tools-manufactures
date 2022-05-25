@@ -20,13 +20,16 @@ const UpdateProfile = ({ user, refetch }) => {
       return;
     }
     const information = { name, email, linkedin, phone, city, education };
-    fetch(`http://localhost:5000/userInformation/${email}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(information),
-    })
+    fetch(
+      `https://boiling-hollows-81420.herokuapp.com/userInformation/${email}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(information),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount) {

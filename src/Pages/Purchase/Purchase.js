@@ -5,7 +5,9 @@ import PurchaseModal from "./PurchaseModal";
 const Purchase = () => {
   const { id } = useParams();
   const { data: tool, isLoading } = useQuery(["tools", id], () =>
-    fetch(`http://localhost:5000/tools/${id}`).then((res) => res.json())
+    fetch(`https://boiling-hollows-81420.herokuapp.com/tools/${id}`).then(
+      (res) => res.json()
+    )
   );
   if (isLoading) return <p>Loading...</p>;
   return (
