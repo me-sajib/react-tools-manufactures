@@ -23,7 +23,7 @@ const Review = () => {
     // show star based on number
     let stars = [];
     for (let i = 0; i < num; i++) {
-      stars.push(<i className="fas fa-star text-orange-500" kye={i}></i>);
+      stars.push(<i className="fas fa-star text-orange-500" key={i}></i>);
     }
     return stars;
   };
