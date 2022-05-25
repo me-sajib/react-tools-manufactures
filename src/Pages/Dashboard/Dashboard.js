@@ -3,24 +3,20 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
 import { Link, Outlet } from "react-router-dom";
 import auth from "../../firebase.config";
+import useAdmin from "../../Hooks/useAdmin";
 import Spinner from "../Shared/Spinner";
 
 const Dashboard = () => {
   const [user, loading] = useAuthState(auth);
-  const { data: isAdminUser, isLoading } = useQuery("isAdmin", () =>
-    fetch(`http://localhost:5000/user/${user.email}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        authorization: `Bearer ${localStorage.getItem("access")}`,
-      },
-    }).then((res) => res.json())
-  );
-  if (loading || isLoading) return <Spinner />;
+  // check admin or not
+  const [admin, adminLoading] = useAdmin(user);
+
+  if (loading || adminLoading) return <Spinner />;
+
   return (
     <div className="container-width">
       <div className="drawer drawer-mobile">
-        <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+        <input id="dashboard-bar" type="checkbox" class="drawer-toggle" />
         <div className="drawer-content">
           {/* <!-- Page content here --> */}
           <h3 className="text-3xl text-purple-500 font-bold py-3">
@@ -30,7 +26,7 @@ const Dashboard = () => {
         </div>
         <div className="drawer-side pr-5">
           <label for="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content shadow-xl shadow-gray-400">
+          <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content shadow-xl lg:shadow-gray-400">
             {/* <!-- Sidebar content here --> */}
             <li>
               <Link to="/dashboard/myProfile">
@@ -38,7 +34,7 @@ const Dashboard = () => {
               </Link>
             </li>
             {/* if user is admin then show */}
-            {isAdminUser?.role === "admin" ? (
+            {admin ? (
               <>
                 <li>
                   <Link to="/dashboard/allUser">
