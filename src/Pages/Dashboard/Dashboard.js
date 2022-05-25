@@ -15,7 +15,7 @@ const Dashboard = () => {
   return (
     <div className="container-width">
       <div className="drawer drawer-mobile">
-        <input id="dashboard-bar" type="checkbox" class="drawer-toggle" />
+        <input id="dashboard-bar" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
           {/* <!-- Page content here --> */}
           <h3 className="text-3xl text-purple-500 font-bold py-3">
@@ -24,7 +24,7 @@ const Dashboard = () => {
           <Outlet />
         </div>
         <div className="drawer-side pr-5">
-          <label for="my-drawer-2" className="drawer-overlay"></label>
+          <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
           <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content shadow-xl lg:shadow-gray-400">
             {/* <!-- Sidebar content here --> */}
             <li>

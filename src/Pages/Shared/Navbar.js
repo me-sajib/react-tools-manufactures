@@ -84,7 +84,7 @@ const Navbar = () => {
         <div className="navbar-end">
           <label
             tabIndex="1"
-            for="dashboard-bar"
+            htmlFor="dashboard-bar"
             className="btn btn-ghost lg:hidden"
           >
             <svg

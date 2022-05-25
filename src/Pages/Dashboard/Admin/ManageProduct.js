@@ -33,6 +33,7 @@ const ManageProduct = () => {
             <AllProduct
               product={tool}
               index={index}
+              key={tool._id}
               refetch={refetch}
             ></AllProduct>
           ))}
