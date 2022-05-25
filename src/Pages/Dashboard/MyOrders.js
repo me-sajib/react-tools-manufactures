@@ -11,7 +11,13 @@ const MyOrders = () => {
   const [user, uLoading] = useAuthState(auth);
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5000/order/${user.email}`)
+      fetch(`http://localhost:5000/order/${user.email}`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("access")}`,
+        },
+      })
         .then((res) => res.json())
         .then((data) => {
           setOrders(data);
