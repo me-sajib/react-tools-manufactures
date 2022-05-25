@@ -49,7 +49,7 @@ const MyPortfolio = () => {
               </a>
             </p>
 
-            <button className="btn btn-primary">Get Started</button>
+            <button className="btn btn-primary">Hire me</button>
           </div>
         </div>
       </div>
