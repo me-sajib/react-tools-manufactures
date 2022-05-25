@@ -79,11 +79,9 @@ const OrderTable = ({ order, index, refetch }) => {
                 {order.paid ? <option>Shipped</option> : null}
               </>
             ) : (
-              <>
-                <option selected disabled>
-                  Shipped
-                </option>
-              </>
+              <option disabled selected>
+                Shipped
+              </option>
             )}
           </select>
         </form>
