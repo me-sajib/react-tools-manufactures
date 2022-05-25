@@ -1,8 +1,7 @@
 import React from "react";
-import Spinner from "../Shared/Spinner";
 import Swal from "sweetalert2";
 
-const UpdateProfile = ({ user, loading, information, refetch }) => {
+const UpdateProfile = ({ user, refetch }) => {
   const updateInformation = (e) => {
     e.preventDefault();
     const name = user?.displayName;
@@ -11,10 +10,18 @@ const UpdateProfile = ({ user, loading, information, refetch }) => {
     const phone = e.target.phone.value;
     const city = e.target.city.value;
     const education = e.target.education.value;
+    // if any field is empty
+    if (!name || !email || !linkedin || !phone || !city || !education) {
+      Swal.fire({
+        title: "Error",
+        text: "All fields are required",
+        icon: "error",
+      });
+      return;
+    }
     const information = { name, email, linkedin, phone, city, education };
-
     fetch(`http://localhost:5000/userInformation/${email}`, {
-      method: "PATCH",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
@@ -34,9 +41,9 @@ const UpdateProfile = ({ user, loading, information, refetch }) => {
   };
   return (
     <div className="my-24 flex items-center justify-center h-screen">
-      <div className="card w-96 bg-base-100 shadow-2xl">
-        <div className="card-body">
-          <h2 className="text-center text-2xl font-bold  uppercase">
+      <div class="card w-96 bg-base-100 shadow-2xl">
+        <div class="card-body">
+          <h2 class="text-center text-2xl font-bold  uppercase">
             Update Information
           </h2>
           <form className="grid grid-cols-1 gap-3" onSubmit={updateInformation}>
@@ -108,11 +115,6 @@ const UpdateProfile = ({ user, loading, information, refetch }) => {
                 className="input input-bordered w-full max-w-xs"
               />
             </div>
-
-            {
-              // spinner show
-              loading && <Spinner />
-            }
 
             <input type="submit" value="update" className="btn w-full" />
           </form>
