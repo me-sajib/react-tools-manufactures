@@ -11,12 +11,16 @@ const MyProfile = () => {
     data: information,
     isLoading,
     refetch,
-  } = useQuery(["information", user], () =>
+  } = useQuery("information", () =>
     fetch(`http://localhost:5000/userInformation/${user.email}`).then((res) =>
       res.json()
     )
   );
+
   if (isLoading) return <Spinner />;
+  if (loading) {
+    return <Spinner />;
+  }
   return (
     <div>
       <h2 className="text-3xl font-bold py-4 text-blue-500 uppercase">
@@ -24,8 +28,8 @@ const MyProfile = () => {
       </h2>
 
       {/* show information */}
-      <div className="overflow-x-auto">
-        <table className="table w-full">
+      <div class="overflow-x-auto">
+        <table class="table w-full">
           <thead>
             <tr>
               <th>Name</th>
@@ -40,7 +44,7 @@ const MyProfile = () => {
             <tr>
               <td>{user?.displayName}</td>
               <td>{user?.email}</td>
-              <td>{user?.linkedin}</td>
+              <td>{information?.linkedin}</td>
               <td>{information?.phone}</td>
               <td>{information?.city}</td>
               <td>{information?.education}</td>
@@ -50,12 +54,7 @@ const MyProfile = () => {
       </div>
 
       {/* update profile */}
-      <UpdateProfile
-        user={user}
-        loading={loading}
-        refetch={refetch}
-        information={information}
-      />
+      <UpdateProfile user={user} refetch={refetch} information={information} />
     </div>
   );
 };
