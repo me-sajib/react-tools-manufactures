@@ -1,11 +1,14 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useQuery } from "react-query";
+import auth from "../../../firebase.config";
 import Spinner from "../../Shared/Spinner";
 import UserTable from "./UserTable";
 
 const Users = () => {
+  const [user, loading] = useAuthState(auth);
   const {
-    data: user,
+    data: allUser,
     isLoading,
     refetch,
   } = useQuery(["user"], () =>
@@ -17,7 +20,10 @@ const Users = () => {
       },
     }).then((res) => res.json())
   );
+
   if (isLoading) return <Spinner />;
+  if (loading) return <Spinner />;
+
   return (
     <div>
       {/* show information */}
@@ -32,10 +38,11 @@ const Users = () => {
             </tr>
           </thead>
           <tbody>
-            {user.map((user, index) => (
+            {allUser.map((users, index) => (
               <UserTable
-                user={user}
-                key={user._id}
+                users={users}
+                currentUser={user}
+                key={users._id}
                 index={index}
                 refetch={refetch}
               />
