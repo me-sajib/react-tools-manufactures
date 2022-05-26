@@ -48,7 +48,7 @@ const Dashboard = () => {
                 </li>
                 <li>
                   <Link to="/dashboard/addProduct">
-                    <i className="fa-solid fa-cart-add"></i>Add A Product
+                    <i class="fa-solid fa-cart-plus"></i> Add A Product
                   </Link>
                 </li>
                 <li>
