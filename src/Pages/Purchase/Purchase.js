@@ -1,6 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
+import Spinner from "../Shared/Spinner";
 import PurchaseModal from "./PurchaseModal";
 const Purchase = () => {
   const { id } = useParams();
@@ -9,7 +10,7 @@ const Purchase = () => {
       (res) => res.json()
     )
   );
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Spinner />;
   return (
     <div className="container-width">
       <div className="hero  bg-base-100 my-24">
